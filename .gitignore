@@ -1,5 +1,5 @@
 .idea/
-target/
+target/**
 
 ### Java ###
 # Compiled class file
