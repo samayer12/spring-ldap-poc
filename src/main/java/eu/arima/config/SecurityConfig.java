@@ -21,7 +21,7 @@ import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${spring.ldap.urls:ldap://localhost:10389}")
+    @Value("${spring.ldap.urls:ldap://localhost:1389}")
     private String ldapUrl;
 
     @Value("${spring.ldap.base:dc=arima,dc=eu}")
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.ldapAuthentication()
                 .contextSource(contextSource())
                 .userSearchFilter("(uid={0})")
-                .userSearchBase("ou=people")
+                .userSearchBase("ou=users")
                 .ldapAuthoritiesPopulator(ldapAuthoritiesPopulator())
                 .groupSearchFilter("(member={0})")
                 .groupSearchBase("ou=groups")
