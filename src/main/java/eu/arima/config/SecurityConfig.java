@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.ldapAuthentication()
                 .contextSource(contextSource())
                 .userSearchFilter("(uid={0})")
-                .userSearchBase("ou=users")
+                .userSearchBase("ou=people")
                 .ldapAuthoritiesPopulator(ldapAuthoritiesPopulator())
                 .groupSearchFilter("(member={0})")
                 .groupSearchBase("ou=groups")

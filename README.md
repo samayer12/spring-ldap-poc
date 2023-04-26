@@ -37,11 +37,11 @@ docker exec etav_web-openldap-1 ldapsearch -x -H ldap://localhost:1389 -b dc=exa
 ```
 
 ```shell
-ldapwhoami -vvv -h localhost:1389 -D "cn=admin,ou=users,dc=example,dc=org" -x -w adminpassword # Login as admin
+ldapwhoami -vvv -h localhost:1389 -D "cn=admin,ou=people,dc=example,dc=org" -x -w adminpassword # Login as admin
 
-ldapwhoami -vvv -h localhost:1389 -D "cn=user01,ou=users,dc=example,dc=org" -x -w password1 # Login as user01
+ldapwhoami -vvv -h localhost:1389 -D "cn=user01,ou=people,dc=example,dc=org" -x -w password1 # Login as user01
 
-ldapwhoami -vvv -h localhost:1389 -D "cn=user02,ou=users,dc=example,dc=org" -x -w password2 # Login as user02
+ldapwhoami -vvv -h localhost:1389 -D "cn=user02,ou=people,dc=example,dc=org" -x -w password2 # Login as user02
 ```
 
 [LDAP demo project](https://github.com/wearearima/spring-boot-ldap-login)
