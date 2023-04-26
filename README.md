@@ -17,6 +17,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - Once started, open 'http://localhost:8080'
 - This will display the publicly available Home Page
 - Navigate to 'Secure Page' to trigger authentication
-- Username: 'baeldung', password: 'password'
-- This will authenticate you, and display your allocated roles (as defined in the 'users.ldif' file)
+- Username: 'user01', password: 'bitnami1'
+- This will authenticate you, but will NOT display your allocated roles (as defined in the 'ldap-server.ldif' file)
 
