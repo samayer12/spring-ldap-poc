@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eu.arima;
+package org.example;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

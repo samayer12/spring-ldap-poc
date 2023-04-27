@@ -1,6 +1,5 @@
 version: "3.8"
 services:
-
   openldap:
     image: bitnami/openldap:latest
     container_name: openldap
