@@ -14,15 +14,24 @@ objectClass: top
 objectClass: organizationalUnit
 ou: people
 
+
+# User Group Definition
 dn: cn=user,ou=groups,dc=example,dc=org
 objectClass: groupOfNames
 objectClass: top
 cn: user
-member: uid=admin,ou=people,dc=example,dc=org
-member: uid=user-test,ou=people,dc=example,dc=org
-member: uid=user01,ou=people,dc=example,dc=org
+member: uid=unauthorized,ou=people,dc=example,dc=org
+member: uid=authorized,ou=people,dc=example,dc=org
 
-dn: cn=user-test,ou=people,dc=example,dc=org
+# Admin Group Definition
+dn: cn=admin,ou=groups,dc=example,dc=org
+objectClass: groupOfNames
+objectClass: top
+cn: admin
+member: cn=authorized,ou=people,dc=example,dc=org
+
+# "Unauthorized" user, pw: bitnami1
+dn: cn=unauthorized,ou=people,dc=example,dc=org
 cn: User1
 cn: user-test
 sn: Bar1
@@ -32,14 +41,15 @@ objectClass: person
 objectClass: posixAccount
 objectClass: top
 userPassword:: Yml0bmFtaTE=
-uid: user-test
+uid: unauthorized
 uidNumber: 1001
 gidNumber: 1001
 homeDirectory: /home/user-test
 
-dn: cn=user01,ou=people,dc=example,dc=org
+# "Authorized" user, pw: bitnami1
+dn: cn=authorized,ou=people,dc=example,dc=org
 cn: User1
-cn: user01
+cn: authorized
 sn: Bar1
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
@@ -47,14 +57,7 @@ objectClass: person
 objectClass: posixAccount
 objectClass: top
 userPassword:: Yml0bmFtaTE=
-uid: user01
+uid: authorized
 uidNumber: 1000
 gidNumber: 1000
-homeDirectory: /home/user01
-
-dn: cn=admin,ou=groups,dc=example,dc=org
-objectClass: groupOfNames
-objectClass: top
-cn: admin
-member: uid=admin,ou=people,dc=example,dc=org
-member: uid=user01,ou=people,dc=example,dc=org
+homeDirectory: /home/authorized
