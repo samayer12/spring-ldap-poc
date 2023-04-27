@@ -10,6 +10,7 @@ import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFac
 import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
 import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
+import org.springframework.security.ldap.userdetails.PersonContextMapper;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -36,7 +37,7 @@ public class SecurityConfig {
 
     @Bean
     protected LdapAuthoritiesPopulator ldapAuthoritiesPopulator(BaseLdapPathContextSource contextSource) {
-        String groupSearchBase = "admin";
+        String groupSearchBase = "";
         DefaultLdapAuthoritiesPopulator authorities =
           new DefaultLdapAuthoritiesPopulator(contextSource, groupSearchBase);
         authorities.setGroupSearchFilter("member={0}");
@@ -49,6 +50,7 @@ public class SecurityConfig {
         LdapBindAuthenticationManagerFactory factory = new LdapBindAuthenticationManagerFactory(contextSource);
         factory.setUserSearchFilter("(uid={0})");
         factory.setUserSearchBase("ou=people");
+        factory.setUserDetailsContextMapper(new PersonContextMapper());
         return factory.createAuthenticationManager();
     }
 

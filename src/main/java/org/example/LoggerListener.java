@@ -58,6 +58,8 @@ public class LoggerListener implements ApplicationListener<AbstractAuthenticatio
 		builder.append(ClassUtils.getShortName(event.getClass()));
 		builder.append(": ");
 		builder.append(event.getAuthentication().getName());
+		builder.append("; authorities: ");
+		builder.append(event.getAuthentication().getAuthorities());
 		builder.append("; details: ");
 		builder.append(event.getAuthentication().getDetails());
 		if (event instanceof AbstractAuthenticationFailureEvent) {
