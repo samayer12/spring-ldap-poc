@@ -9,21 +9,12 @@ import org.springframework.security.test.web.servlet.response.SecurityMockMvcRes
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
-
-
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource(properties = {
-  "spring.ldap.embedded.ldif=classpath:test-server.ldif",
-  "spring.ldap.embedded.base-dn=${spring.ldap.base}",
-  "spring.ldap.embedded.port=8389",
-  "spring.ldap.embedded.url=ldap://localhost:8389/",
-  "spring.ldap.embedded.credential.username=uid=admin",
-  "spring.ldap.embedded.credential.password=secret",
-  "spring.ldap.embedded.validation.enabled=false",
-  "spring.ldap.urls=ldap://localhost:8389/",
-  "spring.ldap.username=uid=admin",
-  "spring.ldap.password=secret"})
+  "spring.ldap.urls=ldap://localhost:1389/",
+  "spring.ldap.username=uid=authorized",
+  "spring.ldap.password=bitnami1"})
 public class SecurityConfigTest {
     @Autowired
     private MockMvc mockMvc;
@@ -31,18 +22,18 @@ public class SecurityConfigTest {
     @Test
     public void loginWithValidUserThenAuthenticated() throws Exception {
       SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login = SecurityMockMvcRequestBuilders.formLogin()
-        .user("user")
-        .password("userpassword");
+        .user("authorized")
+        .password("bitnami1");
 
       mockMvc.perform(login)
-        .andExpect(SecurityMockMvcResultMatchers.authenticated().withUsername("user"));
+        .andExpect(SecurityMockMvcResultMatchers.authenticated().withUsername("authorized"));
     }
 
     @Test
     public void loginWithInvalidUserThenUnauthenticated() throws Exception {
       SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login = SecurityMockMvcRequestBuilders.formLogin()
-        .user("invalid")
-        .password("invalidpassword");
+        .user("not-a-user")
+        .password("password");
 
       mockMvc.perform(login)
         .andExpect(SecurityMockMvcResultMatchers.unauthenticated());
