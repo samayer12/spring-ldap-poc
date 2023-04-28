@@ -5,13 +5,13 @@ It was forked from [this repo](https://github.com/wearearima/spring-boot-ldap-lo
 
 ### Relevant Article: 
 
-- [Learn Spring Security](http://github.learnspringsecurity.com)
+- [Learn Spring Security](http://github.learnspringsecurity.cqom)
 - [Spring Security – security none, filters none, access permitAll](https://www.baeldung.com/security-none-filters-none-access-permitAll)
 - [Intro to Spring Security LDAP](https://www.baeldung.com/spring-security-ldap)
 
 ### Running the project
 
-- You MUST set `--add-exports java.naming/com.sun.jndi.ldap=ALL-UNNAMED` for JVM options. 
+- For tag ` 7bf69c3 (tag: pre-upgrade)`, you MUST set `--add-exports java.naming/com.sun.jndi.ldap=ALL-UNNAMED` for JVM options. This is not required when using newer versions of spring dependencies.
   - Reference `.run/SampleLDAPApplication.run.xml` and [this stackoverflow post](https://stackoverflow.com/questions/73202366/ldapctxfactory-because-module-java-naming-does-not-export-com-sun-jndi-ldap-to-u/73803225).
 - Run `SampleLDAPApplication.java` to start up Spring Boot with a Tomcat container.
 - Run `docker compose up -d` to provision the openLDAP server.
