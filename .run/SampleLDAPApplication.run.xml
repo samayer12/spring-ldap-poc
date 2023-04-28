@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SampleLDAPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <option name="ACTIVE_PROFILES" />
-    <module name="spring-security-ldap" />
+    <module name="spring-boot-ldap-login" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.SampleLDAPApplication" />
     <option name="VM_PARAMETERS" value="--add-exports java.naming/com.sun.jndi.ldap=ALL-UNNAMED" />
     <extension name="coverage">
